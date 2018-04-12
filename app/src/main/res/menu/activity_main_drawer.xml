@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/nav_top_view"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/vehicle_nav_item"
+            android:title="Vehicles"
+            />
+        <item
+            android:id="@+id/service_nav_item"
+            android:title="Services"
+            />
+    </group>
+</menu>

@@ -2,4 +2,8 @@
     <string name="app_name">Vehiman</string>
     <string name="title_activity_singup_acitivty">SingupAcitivty</string>
     <string name="title_activity_dashboard">dashboard</string>
+    <string name="drawer_close">Drawer Close</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="title_vehicleitem_list">VehicleItems</string>
+    <string name="title_vehicleitem_detail">VehicleItem Detail</string>
 </resources>
