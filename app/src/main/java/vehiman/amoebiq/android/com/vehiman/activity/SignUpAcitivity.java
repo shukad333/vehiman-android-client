@@ -203,6 +203,9 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
     private void updateUI(boolean isSignedIn) {
         if (isSignedIn) {
             btnSignIn.setVisibility(View.GONE);
+            Intent intent = new Intent(SignUpAcitivity.this,Dashboard.class);
+            startActivity(intent);
+
       //      btnSignOut.setVisibility(View.VISIBLE);
         //    btnRevokeAccess.setVisibility(View.VISIBLE);
           //  llProfileLayout.setVisibility(View.VISIBLE);
