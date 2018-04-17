@@ -23,11 +23,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import vehiman.amoebiq.android.com.vehiman.R;
 
-import vehiman.amoebiq.android.com.vehiman.activity.dummy.DummyContent;
 import vehiman.amoebiq.android.com.vehiman.adapters.VehicleAdapter;
 import vehiman.amoebiq.android.com.vehiman.model.Vehicle;
 import vehiman.amoebiq.android.com.vehiman.retrofit.ApiClient;
 import vehiman.amoebiq.android.com.vehiman.retrofit.ApiInterface;
+import vehiman.amoebiq.android.com.vehiman.utilities.SessioManager;
 
 import java.util.List;
 
@@ -54,11 +54,16 @@ public class VehicleItemListActivity extends AppCompatActivity {
 
         Log.d(TAG,"Starting vehicles load");
 
+        final SessioManager sessioManager = new SessioManager(getApplicationContext());
+        String email = sessioManager.get("email");
+
         Call<List<Vehicle>> call;
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        call = apiInterface.getAllVehicles();
+        call = apiInterface.getAllVehicles(email);
         recyclerView = (RecyclerView) findViewById(R.id.card_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        Log.d(TAG,"Recorded email is {} "+email);
 
         call.enqueue(new Callback<List<Vehicle>>() {
             @Override

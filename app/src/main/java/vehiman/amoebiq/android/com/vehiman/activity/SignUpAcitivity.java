@@ -2,6 +2,7 @@ package vehiman.amoebiq.android.com.vehiman.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.GoogleAuthException;
+import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -24,7 +29,10 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import java.io.IOException;
+
 import vehiman.amoebiq.android.com.vehiman.R;
+import vehiman.amoebiq.android.com.vehiman.utilities.SessioManager;
 
 public class SignUpAcitivity extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
 
@@ -51,7 +59,7 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
         //btnSignOut.setOnClickListener(this);
         //btnRevokeAccess.setOnClickListener(this);
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.android_client_id))
                 .requestEmail()
                 .build();
 
@@ -99,22 +107,21 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
 
-            Log.e(TAG, "display name: " + acct.getDisplayName());
+            SignUpAcitivity signUpAcitivity = new SignUpAcitivity();
+            new RetrieveTokenTask().execute("a");
+
 
             String personName = acct.getDisplayName();
             String personPhotoUrl = acct.getPhotoUrl().toString();
             String email = acct.getEmail();
 
-            Log.e(TAG, "Name: " + personName + ", email: " + email
-                    + ", Image: " + personPhotoUrl);
-
-//            txtName.setText(personName);
-  //          txtEmail.setText(email);
-
+            final SessioManager sessioManager = new SessioManager(getApplicationContext());
+            sessioManager.put("email",email);
 
             updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
+            Log.e(TAG,"Issue +++ "+result.getStatus().getStatusMessage());
             updateUI(false);
         }
     }
@@ -206,14 +213,34 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
             Intent intent = new Intent(SignUpAcitivity.this,Dashboard.class);
             startActivity(intent);
 
-      //      btnSignOut.setVisibility(View.VISIBLE);
-        //    btnRevokeAccess.setVisibility(View.VISIBLE);
-          //  llProfileLayout.setVisibility(View.VISIBLE);
         } else {
             btnSignIn.setVisibility(View.VISIBLE);
-//            btnSignOut.setVisibility(View.GONE);
-  //          btnRevokeAccess.setVisibility(View.GONE);
-    //        llProfileLayout.setVisibility(View.GONE);
         }
+    }
+
+
+     class RetrieveTokenTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            //String scopes = "oauth2:profile email";
+             final  String G_PLUS_SCOPE =
+                    "oauth2:https://www.googleapis.com/auth/plus.me";
+             final  String USERINFO_SCOPE =
+                    "https://www.googleapis.com/auth/userinfo.profile";
+            String SCOPES = G_PLUS_SCOPE + " " + USERINFO_SCOPE;
+            String token = null;
+            try {
+                Log.e(TAG,"Befinniong");
+                token = GoogleAuthUtil.getToken(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()).getAccount(), SCOPES);
+                Log.e(TAG,"Token :::: "+token);
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
+            }
+            return token;
+        }
+
+
     }
 }

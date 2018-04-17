@@ -5,6 +5,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
+import vehiman.amoebiq.android.com.vehiman.model.Owner;
 import vehiman.amoebiq.android.com.vehiman.model.Vehicle;
 
 /**
@@ -13,6 +16,9 @@ import vehiman.amoebiq.android.com.vehiman.model.Vehicle;
 
 public interface ApiInterface {
 
-    @GET("owner/21/vehicles")
-    public Call<List<Vehicle>> getAllVehicles();
+    @GET("owner/{email}/vehicles")
+    public Call<List<Vehicle>> getAllVehicles(@Path("email") String email);
+
+    @POST("auth/signin")
+    public Call<Owner> signInOrSignUp(@Body Owner owner);
 }
