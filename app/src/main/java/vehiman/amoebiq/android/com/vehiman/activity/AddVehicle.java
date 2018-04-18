@@ -51,16 +51,16 @@ public class AddVehicle extends AppCompatActivity {
         pd.show();
 
         EditText vehicleMake = (EditText) findViewById(R.id.vehicle_make_et);
-        EditText vehicleModel = (EditText) findViewById(R.id.vehicle_model_et);
+        EditText vehicleNumber = (EditText) findViewById(R.id.vehicle_number_et);
         EditText vehicleType = (EditText) findViewById(R.id.vehicle_type_et);
 
         String make = vehicleMake.getText().toString();
-        String model = vehicleModel.getText().toString();
+        String number = vehicleNumber.getText().toString();
         String type = vehicleType.getText().toString();
         String email = sessioManager.get("email");
 
         Vehicle vehicle = new Vehicle();
-        vehicle.setModel(model);
+        vehicle.setNumber(number);
         vehicle.setBrand(make);
         vehicle.setType(type);
 

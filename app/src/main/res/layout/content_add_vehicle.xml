@@ -108,12 +108,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="50"
-                    android:text="Model"
+                    android:text="Number"
                     android:textColor="@color/textHintColor"
                     android:textSize="@dimen/font_size" />
 
                 <EditText
-                    android:id="@+id/vehicle_model_et"
+                    android:id="@+id/vehicle_number_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"

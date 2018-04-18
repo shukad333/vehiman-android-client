@@ -9,7 +9,7 @@ public class Vehicle {
     private Long id;
     private String brand;
     private String type;
-    private String model;
+    private String number;
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class Vehicle {
         this.type = type;
     }
 
-    public String getModel() {
-        return model;
+    public String getNumber() {
+        return number;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setNumber(String model) {
+        this.number = model;
     }
 }

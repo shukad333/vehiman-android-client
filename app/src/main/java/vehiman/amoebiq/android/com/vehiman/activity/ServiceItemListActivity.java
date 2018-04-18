@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,21 @@ public class ServiceItemListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Services</font>"));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        View recyclerView = findViewById(R.id.serviceitem_list);
-        assert recyclerView != null;
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floating_button_add_service);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ServiceItemListActivity.this,AddVehicle.class);
+                startActivity(intent);
+
+            }
+        });
+
+
 
     }
 

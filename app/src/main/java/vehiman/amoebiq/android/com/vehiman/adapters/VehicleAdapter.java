@@ -36,8 +36,12 @@ public class VehicleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         final VehicleViewHolder vehicleViewHolder = (VehicleViewHolder)holder;
 
         String brand = vehicles.get(position).getBrand();
-        Log.d(TAG,brand);
-        vehicleViewHolder.vehicleName.setText(brand);
+        String type = vehicles.get(position).getType();
+        String number = vehicles.get(position).getNumber();
+
+        vehicleViewHolder.vehicleMake.setText(brand);
+        vehicleViewHolder.vehicleType.setText(type);
+        vehicleViewHolder.vehicleNumber.setText(number);
     }
 
     @Override
@@ -48,9 +52,11 @@ public class VehicleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 class VehicleViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView vehicleName;
+    public TextView vehicleMake,vehicleType,vehicleNumber;
     public VehicleViewHolder(View view) {
         super(view);
-        vehicleName = (TextView) view.findViewById(R.id.id_vehicle_brand);
+        vehicleMake = (TextView) view.findViewById(R.id.id_vehicle_make);
+        vehicleType = (TextView) view.findViewById(R.id.id_vehicle_type);
+        vehicleNumber = (TextView) view.findViewById(R.id.id_vehicle_number);
     }
 }
