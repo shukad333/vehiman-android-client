@@ -55,6 +55,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             Intent intent = new Intent(Dashboard.this,VehicleItemListActivity.class);
             startActivity(intent);
         }
+        if(id==R.id.service_nav_item) {
+            Intent intent = new Intent(Dashboard.this,ServiceItemListActivity.class);
+            startActivity(intent);
+        }
         return false;
     }
 }

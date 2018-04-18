@@ -7,4 +7,8 @@
     <string name="title_vehicleitem_list">VehicleItems</string>
     <string name="title_vehicleitem_detail">VehicleItem Detail</string>
     <string name="android_client_id">625045819598-2b52jfgtg1amkmeo8ulbnnvn9mm6cfv3.apps.googleusercontent.com</string>
+    <string name="title_serviceitem_list">ServiceItems</string>
+    <string name="title_serviceitem_detail">ServiceItem Detail</string>
+    <string name="title_activity_add_vehicle">AddVehicle</string>
+    <string name="add_vehicle">Add Vehicle</string>
 </resources>

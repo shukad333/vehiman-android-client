@@ -46,6 +46,16 @@ public class VehicleItemListActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>My Vehicles</font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floating_button_add_vehicle);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(VehicleItemListActivity.this,AddVehicle.class);
+                startActivity(intent);
+
+            }
+        });
         loadVehicles();
 
     }

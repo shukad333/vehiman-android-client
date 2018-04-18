@@ -31,7 +31,7 @@
         <activity
             android:name=".activity.VehicleItemListActivity"
             android:label="@string/title_vehicleitem_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.VehicleItemDetailActivity"
             android:label="@string/title_vehicleitem_detail"
@@ -41,6 +41,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="vehiman.amoebiq.android.com.vehiman.activity.VehicleItemListActivity" />
         </activity>
+        <activity
+            android:name=".activity.ServiceItemListActivity"
+            android:label="@string/title_serviceitem_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ServiceItemDetailActivity"
+            android:label="@string/title_serviceitem_detail"
+            android:parentActivityName=".activity.ServiceItemListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="vehiman.amoebiq.android.com.vehiman.activity.ServiceItemListActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddVehicle"
+            android:label="@string/title_activity_add_vehicle"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
