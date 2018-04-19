@@ -1,11 +1,13 @@
 package vehiman.amoebiq.android.com.vehiman.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import vehiman.amoebiq.android.com.vehiman.R;
 import vehiman.amoebiq.android.com.vehiman.model.ServiceDetails;
 
 /**
@@ -22,7 +24,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+       return null;
     }
 
     @Override
