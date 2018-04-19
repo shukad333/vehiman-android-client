@@ -18,7 +18,11 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -31,6 +35,7 @@ import vehiman.amoebiq.android.com.vehiman.fragment.DashboardItemFragment;
 import vehiman.amoebiq.android.com.vehiman.model.ServiceDetails;
 import vehiman.amoebiq.android.com.vehiman.retrofit.ApiClient;
 import vehiman.amoebiq.android.com.vehiman.retrofit.ApiInterface;
+import vehiman.amoebiq.android.com.vehiman.utilities.CircleTransform;
 import vehiman.amoebiq.android.com.vehiman.utilities.SessioManager;
 
 public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,11 +53,14 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>My Dashboard</font>"));
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final SessioManager sessioManager = new SessioManager(getApplicationContext());
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        //loadServices();
+        View hView = navigationView.getHeaderView(0);
+        TextView nameTv = hView.findViewById(R.id.name_header);
+        nameTv.setText(sessioManager.get("name"));
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_close, R.string.drawer_open) {
 
@@ -64,14 +72,16 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+
             }
         };
 
         toggle.syncState();
-
+        loadImage(hView, sessioManager.get("image"));
         fragment(new DashboardItemFragment(), "Dashbpard");
 
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -92,7 +102,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(TAG,"Activity resumed....");
+        Log.e(TAG, "Activity resumed....");
         fragment(new DashboardItemFragment(), "Dashbpard");
     }
 
@@ -103,6 +113,19 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         fragmentTransaction.addToBackStack(transaction);
         fragmentTransaction.commit();
         Log.d("backFragment", tag);
+    }
+
+    private void loadImage(View view, String uri) {
+
+        if (null != view && null != uri) {
+            Log.e(TAG, "Url is " + uri);
+            ImageView iv = view.findViewById(R.id.profile_avatar);
+            if(null!=iv) {
+                Picasso.with(getApplicationContext()).load(uri).transform(new CircleTransform()).into(iv);
+            }
+
+        }
+
     }
 
 

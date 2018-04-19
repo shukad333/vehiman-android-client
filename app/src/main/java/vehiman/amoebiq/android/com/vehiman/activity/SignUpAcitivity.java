@@ -117,6 +117,8 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
 
             final SessioManager sessioManager = new SessioManager(getApplicationContext());
             sessioManager.put("email",email);
+            sessioManager.put("image",personPhotoUrl);
+            sessioManager.put("name",personName);
 
             updateUI(true);
         } else {
