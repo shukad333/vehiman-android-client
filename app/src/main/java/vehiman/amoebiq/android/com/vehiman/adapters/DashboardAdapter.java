@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import vehiman.amoebiq.android.com.vehiman.R;
@@ -15,7 +16,7 @@ import vehiman.amoebiq.android.com.vehiman.model.ServiceDetails;
  * Created by skadavath on 4/19/18.
  */
 
-public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<ServiceDetails> serviceDetails;
 
@@ -25,7 +26,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dashboard_item_list,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dashboard_item_list, parent, false);
         return new DashboardViewHolder(view);
     }
 
@@ -34,7 +35,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         final DashboardViewHolder dashboardViewHolder = (DashboardViewHolder) holder;
 
+        String vehicle = serviceDetails.get(position).getVehicle().getBrand() + " " + serviceDetails.get(position).getVehicle().getType();
+        dashboardViewHolder.vehicle.setText(vehicle);
         dashboardViewHolder.serviceType.setText(serviceDetails.get(position).getServiceType());
+        dashboardViewHolder.serviceDate.setText(new SimpleDateFormat("dd-MMM-yyyy").format(serviceDetails.get(position).getServiceDate()));
 
     }
 
@@ -47,12 +51,14 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 class DashboardViewHolder extends RecyclerView.ViewHolder {
 
-    TextView serviceType;
-    public  DashboardViewHolder(View view) {
+    TextView serviceType, serviceDate, vehicle;
+
+    public DashboardViewHolder(View view) {
         super(view);
         serviceType = (TextView) view.findViewById(R.id.service_type_tv);
+        serviceDate = (TextView) view.findViewById(R.id.service_date_tv);
+        vehicle = (TextView) view.findViewById(R.id.service_vehicle_tv);
     }
-
 
 
 }

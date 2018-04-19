@@ -69,27 +69,32 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         toggle.syncState();
 
-        fragment(new DashboardItemFragment(),"Dashbpard");
+        fragment(new DashboardItemFragment(), "Dashbpard");
 
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Log.e(TAG,"Nav item clicked");
+        Log.e(TAG, "Nav item clicked");
         int id = item.getItemId();
-        if(id==R.id.vehicle_nav_item) {
-            Log.e(TAG,"Vehicle selected");
-            Intent intent = new Intent(Dashboard.this,VehicleItemListActivity.class);
+        if (id == R.id.vehicle_nav_item) {
+            Log.e(TAG, "Vehicle selected");
+            Intent intent = new Intent(Dashboard.this, VehicleItemListActivity.class);
             startActivity(intent);
         }
-        if(id==R.id.service_nav_item) {
-            Intent intent = new Intent(Dashboard.this,ServiceItemListActivity.class);
+        if (id == R.id.service_nav_item) {
+            Intent intent = new Intent(Dashboard.this, ServiceItemListActivity.class);
             startActivity(intent);
         }
         return false;
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG,"Activity resumed....");
+        fragment(new DashboardItemFragment(), "Dashbpard");
+    }
 
     public void fragment(Fragment fragment, String transaction) {
         tag = transaction;
@@ -99,8 +104,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         fragmentTransaction.commit();
         Log.d("backFragment", tag);
     }
-
-
 
 
 }

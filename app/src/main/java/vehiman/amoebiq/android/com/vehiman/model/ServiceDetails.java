@@ -15,6 +15,15 @@ public class ServiceDetails {
     private Date nextServiceDate;
     private long currentOdo;
     private long nextOdo;
+    private Vehicle vehicle;
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 
     public long getId() {
         return id;
