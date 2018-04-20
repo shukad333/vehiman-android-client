@@ -11,4 +11,21 @@
     <string name="title_serviceitem_detail">ServiceItem Detail</string>
     <string name="title_activity_add_vehicle">AddVehicle</string>
     <string name="add_vehicle">Add Vehicle</string>
+
+    <string-array name="wheel_type">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="four_wheeler_make">
+        <item>TATA</item>
+        <item>Maruti</item>
+        <item>Mahindra</item>
+        <item>Opel</item>
+        <item>Hyundai</item>
+        <item>Mercidez</item>
+        <item>Audi</item>
+        <item>BMW</item>
+    </string-array>
+    <string name="title_activity_add_service">AddService</string>
 </resources>

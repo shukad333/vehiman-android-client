@@ -57,6 +57,10 @@
         <activity
             android:name=".activity.AddVehicle"
             android:label="@string/title_activity_add_vehicle"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AddService"
+            android:label="@string/title_activity_add_service"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

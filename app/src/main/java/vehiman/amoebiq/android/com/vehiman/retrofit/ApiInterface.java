@@ -29,4 +29,14 @@ public interface ApiInterface {
 
     @GET("owner/{email}/service")
     public Call<List<ServiceDetails>> getAllServicesOfUser(@Path("email") String email);
+
+    @GET("config/vehicle/wheel")
+    public Call<List<Integer>> getAllVehicleWheels();
+
+    @GET("config/vehicle/make/{wheel}")
+    public Call<List<String>> getAllVehicleBrands(@Path("wheel") int wheel);
+
+    @GET("config/vehicle/type/{make}")
+    public Call<List<String>> getAllVehicleTypes(@Path("make") String make);
+
 }

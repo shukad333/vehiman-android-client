@@ -30,6 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <LinearLayout
             android:id="@+id/scheduleform"
             android:layout_width="match_parent"
@@ -38,6 +40,26 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
+
+
+                <TextView
+
+                    android:id="@+id/no_of_wheels_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Wheel"
+                    android:textColor="@color/textHintColor"
+                    android:textSize="@dimen/font_size"
+
+                    />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/vehicle_no_of_wheels"
+                    android:backgroundTint="@color/buttonBackground">
+                </Spinner>
 
             <TextView
 
@@ -51,17 +73,12 @@
 
                 />
 
-            <EditText
-                android:id="@+id/vehicle_make_et"
-                android:layout_width="match_parent"
+            <Spinner
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="10dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:inputType="text"
-                android:spinnerMode="dialog"
-                />
+                android:id="@+id/vehicle_brand"
+                android:backgroundTint="@color/buttonBackground">
+            </Spinner>
 
         <LinearLayout
             android:id="@+id/deplabelform"
@@ -81,17 +98,12 @@
                 android:textColor="@color/textHintColor"
                 android:textSize="@dimen/font_size" />
 
-            <EditText
-                android:id="@+id/vehicle_type_et"
-                android:layout_width="match_parent"
+            <Spinner
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="10dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:inputType="text"
-                android:spinnerMode="dialog"
-                />
+                android:id="@+id/vehicle_type"
+                android:backgroundTint="@color/buttonBackground">
+            </Spinner>
 
         </LinearLayout>
 
