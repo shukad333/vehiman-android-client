@@ -7,6 +7,7 @@ package vehiman.amoebiq.android.com.vehiman.model;
 public class Vehicle {
 
     private Long id;
+    private int noOfWheels;
     private String brand;
     private String type;
     private String number;
@@ -41,5 +42,13 @@ public class Vehicle {
 
     public void setNumber(String model) {
         this.number = model;
+    }
+
+    public int getNoOfWheels() {
+        return noOfWheels;
+    }
+
+    public void setNoOfWheels(int noOfWheels) {
+        this.noOfWheels = noOfWheels;
     }
 }

@@ -55,9 +55,10 @@
                     />
 
                 <Spinner
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/vehicle_no_of_wheels"
+                    android:spinnerMode="dialog"
                     android:backgroundTint="@color/buttonBackground">
                 </Spinner>
 
@@ -74,9 +75,10 @@
                 />
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/vehicle_brand"
+                android:spinnerMode="dialog"
                 android:backgroundTint="@color/buttonBackground">
             </Spinner>
 
@@ -99,9 +101,10 @@
                 android:textSize="@dimen/font_size" />
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/vehicle_type"
+                android:spinnerMode="dialog"
                 android:backgroundTint="@color/buttonBackground">
             </Spinner>
 

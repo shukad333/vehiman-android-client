@@ -7,6 +7,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,6 +42,9 @@ public class AddVehicle extends AppCompatActivity {
         setContentView(R.layout.activity_add_vehicle);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Add Vehicle</font>"));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         itemSpinner = (Spinner) findViewById(R.id.vehicle_no_of_wheels);
         vehicleBrandSpinner = (Spinner) findViewById(R.id.vehicle_brand);
@@ -92,19 +97,21 @@ public class AddVehicle extends AppCompatActivity {
         pd.setMessage("Saving!!!");
         pd.show();
 
-        EditText vehicleMake = (EditText) findViewById(R.id.vehicle_number_et);
+        //EditText vehicleMake = (EditText) findViewById(R.id.vehicle_number_et);
         EditText vehicleNumber = (EditText) findViewById(R.id.vehicle_number_et);
-        EditText vehicleType = (EditText) findViewById(R.id.vehicle_number_et);
+        //EditText vehicleType = (EditText) findViewById(R.id.vehicle_number_et);
 
-        String make = vehicleMake.getText().toString();
+        String make = vehicleBrandSpinner.getSelectedItem().toString();
         String number = vehicleNumber.getText().toString();
-        String type = vehicleType.getText().toString();
+        String type = typeSpinner.getSelectedItem().toString();
         String email = sessioManager.get("email");
+        int noOfWheels = Integer.valueOf(itemSpinner.getSelectedItem().toString());
 
         Vehicle vehicle = new Vehicle();
         vehicle.setNumber(number);
         vehicle.setBrand(make);
         vehicle.setType(type);
+        vehicle.setNoOfWheels(noOfWheels);
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<List<Vehicle>> call = apiInterface.addVehicles(email,Collections.singletonList(vehicle));
@@ -182,6 +189,16 @@ public class AddVehicle extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            navigateUpTo(new Intent(AddVehicle.this,VehicleItemListActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadType(final String make) {
