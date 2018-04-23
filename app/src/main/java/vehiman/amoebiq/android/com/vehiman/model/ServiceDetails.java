@@ -14,7 +14,7 @@ public class ServiceDetails {
     private Date serviceDate;
     private Date nextServiceDate;
     private long currentOdo;
-    private long nextOdo;
+    private long nextServiceOdo;
     private Vehicle vehicle;
 
     public Vehicle getVehicle() {
@@ -73,11 +73,11 @@ public class ServiceDetails {
         this.currentOdo = currentOdo;
     }
 
-    public long getNextOdo() {
-        return nextOdo;
+    public long getNextServiceOdo() {
+        return nextServiceOdo;
     }
 
-    public void setNextOdo(long nextOdo) {
-        this.nextOdo = nextOdo;
+    public void setNextServiceOdo(long nextServiceOdo) {
+        this.nextServiceOdo = nextServiceOdo;
     }
 }

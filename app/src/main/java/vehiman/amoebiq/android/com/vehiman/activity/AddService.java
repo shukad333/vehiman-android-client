@@ -90,7 +90,7 @@ public class AddService extends AppCompatActivity {
                 }
 
                 serviceDetails.setCurrentOdo(Long.parseLong(currentOdo.getText().toString()));
-                serviceDetails.setNextOdo(Long.parseLong(nextOdo.getText().toString()));
+                serviceDetails.setNextServiceOdo(Long.parseLong(nextOdo.getText().toString()));
                 serviceDetails.setServiceType(serviceTypeSpinner.getSelectedItem().toString());
 
                 Long vehicleId = vehicleMap.get(vehicleSpinner.getSelectedItem());
