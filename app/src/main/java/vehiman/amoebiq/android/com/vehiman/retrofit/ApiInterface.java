@@ -10,6 +10,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import vehiman.amoebiq.android.com.vehiman.model.Owner;
 import vehiman.amoebiq.android.com.vehiman.model.ServiceDetails;
+import vehiman.amoebiq.android.com.vehiman.model.ServiceTypes;
 import vehiman.amoebiq.android.com.vehiman.model.Vehicle;
 
 /**
@@ -27,6 +28,9 @@ public interface ApiInterface {
     @PUT("owner/{email}/vehicle")
     public Call<List<Vehicle>> addVehicles(@Path("email") String email ,@Body List<Vehicle> vehicles);
 
+    @PUT("owner/{email}/vehicle/{vehicleId}/services")
+    public Call<List<ServiceDetails>> addService(@Path("email") String email ,@Path("vehicleId") long vehicleId ,@Body List<ServiceDetails> services);
+
     @GET("owner/{email}/service")
     public Call<List<ServiceDetails>> getAllServicesOfUser(@Path("email") String email);
 
@@ -38,5 +42,8 @@ public interface ApiInterface {
 
     @GET("config/vehicle/type/{make}")
     public Call<List<String>> getAllVehicleTypes(@Path("make") String make);
+
+    @GET("config/serviceTypes")
+    public Call<List<ServiceTypes>> getServiceTypes();
 
 }

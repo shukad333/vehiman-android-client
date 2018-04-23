@@ -11,6 +11,7 @@
     <string name="title_serviceitem_detail">ServiceItem Detail</string>
     <string name="title_activity_add_vehicle">AddVehicle</string>
     <string name="add_vehicle">Add Vehicle</string>
+    <string name="add_service">Add Service</string>
 
     <string-array name="wheel_type">
         <item>2</item>

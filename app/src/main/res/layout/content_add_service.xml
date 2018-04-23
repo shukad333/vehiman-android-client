@@ -37,16 +37,227 @@
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wheels"/>
+                android:layout_marginTop="20dp"
+                android:text="Vehicle"
+                android:textColor="@color/textHintColor"
+                android:textSize="@dimen/font_size"
+
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/vehicle"
+                android:spinnerMode="dialog"
+                android:backgroundTint="@color/buttonBackground">
+            </Spinner>
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Service Type"
+                    android:textColor="@color/textHintColor"
+                    android:textSize="@dimen/font_size"
+
+                    />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/service_type"
+                    android:spinnerMode="dialog"
+                    android:backgroundTint="@color/buttonBackground">
+                </Spinner>
+
+
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Current ODO reading"
+                android:textColor="@color/textHintColor"
+                android:textSize="@dimen/font_size"/>
+
+            <EditText
+                android:id="@+id/current_odo_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="10dp"
+                android:drawableRight="@drawable/odometer"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:inputType="number"
+                android:spinnerMode="dialog"
+                />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Next service in (ODO)"
+                    android:textColor="@color/textHintColor"
+                    android:textSize="@dimen/font_size"/>
+
+                <EditText
+                    android:id="@+id/next_odo_et"
+                    android:drawableRight="@drawable/odometer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:inputType="number"
+                    android:spinnerMode="dialog"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Current Serivce Date"
+                    android:textColor="@color/textHintColor"
+                    android:textSize="@dimen/font_size"/>
+
+
+                <EditText
+                    android:id="@+id/current_service_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_height"
+                    android:layout_weight="50"
+                    android:backgroundTint="@color/editTextSelected"
+                    android:drawableRight="@drawable/date"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:onClick="dateClick"
+                    android:tag="0"
+                    android:singleLine="true"
+
+                    android:textColor="@color/textColorDark"
+                    android:textColorHint="@color/textHintColor"
+                    android:textSize="@dimen/font_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Next Serivce Date"
+                    android:textColor="@color/textHintColor"
+                    android:textSize="@dimen/font_size"/>
+
+
+                <EditText
+                    android:id="@+id/next_service_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_height"
+                    android:layout_weight="50"
+                    android:backgroundTint="@color/editTextSelected"
+                    android:drawableRight="@drawable/date"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:onClick="dateClick"
+                    android:tag="1"
+                    android:singleLine="true"
+
+                    android:textColor="@color/textColorDark"
+                    android:textColorHint="@color/textHintColor"
+                    android:textSize="@dimen/font_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_add_service"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="27dp"
+                android:layout_marginTop="@dimen/button_gap"
+                android:background="@drawable/button_outline"
+                android:text="@string/add_service"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/font_size_hint"
+                android:textStyle="bold" />
 
 
 
         </LinearLayout>
+
 
     </ScrollView>
 
