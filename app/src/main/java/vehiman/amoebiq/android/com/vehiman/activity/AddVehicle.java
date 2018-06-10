@@ -27,6 +27,7 @@ import vehiman.amoebiq.android.com.vehiman.R;
 import vehiman.amoebiq.android.com.vehiman.model.Vehicle;
 import vehiman.amoebiq.android.com.vehiman.retrofit.ApiClient;
 import vehiman.amoebiq.android.com.vehiman.retrofit.ApiInterface;
+import vehiman.amoebiq.android.com.vehiman.utilities.Constants;
 import vehiman.amoebiq.android.com.vehiman.utilities.SessioManager;
 
 public class AddVehicle extends AppCompatActivity {
@@ -104,7 +105,7 @@ public class AddVehicle extends AppCompatActivity {
         String make = vehicleBrandSpinner.getSelectedItem().toString();
         String number = vehicleNumber.getText().toString();
         String type = typeSpinner.getSelectedItem().toString();
-        String email = sessioManager.get("email");
+        String email = sessioManager.get(Constants.SESSION_EMAIL);
         int noOfWheels = Integer.valueOf(itemSpinner.getSelectedItem().toString());
 
         Vehicle vehicle = new Vehicle();

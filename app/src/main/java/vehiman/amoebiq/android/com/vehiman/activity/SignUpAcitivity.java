@@ -32,6 +32,7 @@ import com.google.android.gms.common.api.Status;
 import java.io.IOException;
 
 import vehiman.amoebiq.android.com.vehiman.R;
+import vehiman.amoebiq.android.com.vehiman.utilities.Constants;
 import vehiman.amoebiq.android.com.vehiman.utilities.SessioManager;
 
 public class SignUpAcitivity extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
@@ -116,9 +117,9 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
             String email = acct.getEmail();
 
             final SessioManager sessioManager = new SessioManager(getApplicationContext());
-            sessioManager.put("email",email);
-            sessioManager.put("image",personPhotoUrl);
-            sessioManager.put("name",personName);
+            sessioManager.put(Constants.SESSION_EMAIL,email);
+            sessioManager.put(Constants.SESSION_IMAGE,personPhotoUrl);
+            sessioManager.put(Constants.SESSION_NAME,personName);
 
             updateUI(true);
         } else {

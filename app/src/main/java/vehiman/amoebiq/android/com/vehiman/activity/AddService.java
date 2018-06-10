@@ -38,13 +38,14 @@ import vehiman.amoebiq.android.com.vehiman.model.ServiceTypes;
 import vehiman.amoebiq.android.com.vehiman.model.Vehicle;
 import vehiman.amoebiq.android.com.vehiman.retrofit.ApiClient;
 import vehiman.amoebiq.android.com.vehiman.retrofit.ApiInterface;
+import vehiman.amoebiq.android.com.vehiman.utilities.Constants;
 import vehiman.amoebiq.android.com.vehiman.utilities.SessioManager;
 
 public class AddService extends AppCompatActivity {
 
     ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-    Map<String,Long> vehicleMap = new HashMap<>();
+    Map<String, Long> vehicleMap = new HashMap<>();
     SessioManager sessioManager = null;
 
     Spinner vehicleSpinner;
@@ -83,8 +84,8 @@ public class AddService extends AppCompatActivity {
 
                 ServiceDetails serviceDetails = new ServiceDetails();
                 try {
-                    serviceDetails.setServiceDate(new SimpleDateFormat("dd-MMM-yyyy").parse(currentServiceDate.getText().toString()));
-                    serviceDetails.setNextServiceDate(new SimpleDateFormat("dd-MMM-yyyy").parse(nextServiceDate.getText().toString()));
+                    serviceDetails.setServiceDate(new SimpleDateFormat(Constants.DATE_FORMAT).parse(currentServiceDate.getText().toString()));
+                    serviceDetails.setNextServiceDate(new SimpleDateFormat(Constants.DATE_FORMAT).parse(nextServiceDate.getText().toString()));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -95,13 +96,13 @@ public class AddService extends AppCompatActivity {
 
                 Long vehicleId = vehicleMap.get(vehicleSpinner.getSelectedItem());
 
-                Call<List<ServiceDetails>> call = apiInterface.addService(sessioManager.get("email"),vehicleId, Collections.singletonList(serviceDetails));
+                Call<List<ServiceDetails>> call = apiInterface.addService(sessioManager.get(Constants.SESSION_EMAIL), vehicleId, Collections.singletonList(serviceDetails));
                 call.enqueue(new Callback<List<ServiceDetails>>() {
                     @Override
                     public void onResponse(Call<List<ServiceDetails>> call, Response<List<ServiceDetails>> response) {
-                        if(response.code()==202) {
-                            Toast.makeText(AddService.this,"Successfully Added Service",Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(AddService.this,Dashboard.class);
+                        if (response.code() == 202) {
+                            Toast.makeText(AddService.this, "Successfully Added Service", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(AddService.this, Dashboard.class);
                             startActivity(intent);
                         }
                     }
@@ -109,18 +110,15 @@ public class AddService extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<List<ServiceDetails>> call, Throwable t) {
 
-                        Toast.makeText(AddService.this,"Error saving the service!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddService.this, "Error saving the service!", Toast.LENGTH_LONG).show();
                         t.printStackTrace();
 
                     }
                 });
 
 
-
             }
         });
-
-
 
 
     }
@@ -134,17 +132,18 @@ public class AddService extends AppCompatActivity {
         call.enqueue(new Callback<List<Vehicle>>() {
             @Override
             public void onResponse(Call<List<Vehicle>> call, Response<List<Vehicle>> response) {
-                if(response.code()==202 || response.code()==200) {
+                if (response.code() == 202 || response.code() == 200) {
                     List<Vehicle> vehicles = response.body();
 
-                    List<String> vehicleNumbers = vehicles.stream().map(v->v.getNumber()).collect(Collectors.toList());
+                    List<String> vehicleNumbers = vehicles.stream().map(v -> v.getNumber()).collect(Collectors.toList());
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddService.this,android.R.layout.simple_spinner_item,vehicleNumbers);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);;
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddService.this, android.R.layout.simple_spinner_item, vehicleNumbers);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ;
                     vehicleSpinner.setAdapter(adapter);
 
-                    for(Vehicle vehicle : vehicles) {
-                        vehicleMap.put(vehicle.getNumber(),vehicle.getId());
+                    for (Vehicle vehicle : vehicles) {
+                        vehicleMap.put(vehicle.getNumber(), vehicle.getId());
                     }
                 }
             }
@@ -164,13 +163,14 @@ public class AddService extends AppCompatActivity {
         call.enqueue(new Callback<List<ServiceTypes>>() {
             @Override
             public void onResponse(Call<List<ServiceTypes>> call, Response<List<ServiceTypes>> response) {
-                if(response.code()==202 || response.code()==200) {
+                if (response.code() == 202 || response.code() == 200) {
 
                     List<ServiceTypes> servicesTypes = response.body();
                     List<String> services = servicesTypes.stream().map(service -> service.getDescription()).collect(Collectors.toList());
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddService.this,android.R.layout.simple_spinner_item,services);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);;
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddService.this, android.R.layout.simple_spinner_item, services);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ;
                     serviceTypeSpinner.setAdapter(adapter);
 
                 }
@@ -203,16 +203,16 @@ public class AddService extends AppCompatActivity {
 
                                 String month = new DateFormatSymbols().getMonths()[arg2];
 
-                                et.setText(arg3 + "-" + (month.substring(0,3)) + "-" + arg1);
+                                et.setText(arg3 + "-" + (month.substring(0, 3)) + "-" + arg1);
 
 
                             }
                         }, year, month, day);
 
-        if(tag.equals("0"))
-        dpd.getDatePicker().setMaxDate(System.currentTimeMillis()-1000);
-        if(tag.equals("1"))
-            dpd.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+        if (tag.equals("0"))
+            dpd.getDatePicker().setMaxDate(System.currentTimeMillis() - 1000);
+        if (tag.equals("1"))
+            dpd.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         dpd.show();
 
 
